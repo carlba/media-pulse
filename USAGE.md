@@ -40,6 +40,30 @@ REDIS_PORT=6379       # default: 6379
 
 ## Usage
 
+### Running the Example
+
+To see the system in action with sample data:
+
+```bash
+# Option 1: Using Docker Compose (recommended)
+docker-compose up -d  # Start Redis in background
+npm run example       # Run the example
+docker-compose down   # Stop Redis when done
+
+# Option 2: Using local Redis
+# 1. Start Redis server (in a separate terminal)
+redis-server
+
+# 2. Run the example
+npm run example
+```
+
+The example demonstrates:
+- Starting the worker and monitor service
+- Processing different types of Trakt.tv changes (episode, season, series)
+- Queue-based job processing
+- Graceful shutdown
+
 ### Starting the Application
 
 ```bash

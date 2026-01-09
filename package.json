@@ -18,6 +18,7 @@
     "build": "tsc",
     "start": "node dist/index.js",
     "start:dev": "nodemon -r dotenv/config -q src/index.ts",
+    "example": "tsx src/example.ts",
     "test": "vitest run",
     "test:watch": "vitest watch",
     "test:coverage": "vitest run --coverage",
