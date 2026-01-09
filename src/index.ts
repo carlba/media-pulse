@@ -38,7 +38,11 @@ async function main() {
 }
 
 // Run the application if this file is executed directly
-if (import.meta.url === `file://${process.argv[1]}`) {
+// We compare resolved file paths to handle different module resolution scenarios
+const isMainModule =
+  process.argv[1] && import.meta.url === `file://${process.argv[1].replace(/\\/g, '/')}`;
+
+if (isMainModule) {
   main().catch((error) => {
     console.error('Error starting application:', error);
     process.exit(1);
