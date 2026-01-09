@@ -1,5 +1,5 @@
-import { TraktMonitorService } from './services/traktMonitorService.js';
-import { createFolderScanWorker } from './workers/folderScanWorker.js';
+import { TraktMonitorService } from './services/trakt-monitor.service.js';
+import { createFolderScanWorker } from './workers/folder-scan.worker.js';
 
 export function helloWorld() {
   return 'Hello World!';
@@ -49,7 +49,7 @@ if (isMainModule) {
   });
 }
 
-export { TraktMonitorService } from './services/traktMonitorService.js';
-export { createFolderScanWorker } from './workers/folderScanWorker.js';
-export { addFolderScanJob, folderScanQueue } from './queue/folderScanQueue.js';
+export { TraktMonitorService } from './services/trakt-monitor.service.js';
+export { createFolderScanWorker } from './workers/folder-scan.worker.js';
+export { addFolderScanJob, folderScanQueue } from './queue/folder-scan.queue.js';
 export * from './types/index.js';

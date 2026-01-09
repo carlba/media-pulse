@@ -10,8 +10,8 @@
  * 2. Run: npm run start:dev
  */
 
-import { TraktMonitorService } from './services/traktMonitorService.js';
-import { createFolderScanWorker } from './workers/folderScanWorker.js';
+import { TraktMonitorService } from './services/trakt-monitor.service.js';
+import { createFolderScanWorker } from './workers/folder-scan.worker.js';
 
 async function runExample() {
   console.log('=== Media Pulse Example ===\n');

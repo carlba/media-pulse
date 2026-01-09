@@ -1,5 +1,5 @@
 import type { TraktChange } from '../types/index.js';
-import { addFolderScanJob } from '../queue/folderScanQueue.js';
+import { addFolderScanJob } from '../queue/folder-scan.queue.js';
 
 /**
  * Service to monitor Trakt.tv list changes

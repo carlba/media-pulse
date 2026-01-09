@@ -1,9 +1,9 @@
 import { describe, it, expect, beforeEach, vi } from 'vitest';
-import { TraktMonitorService } from './traktMonitorService.js';
-import * as folderScanQueue from '../queue/folderScanQueue.js';
+import { TraktMonitorService } from './trakt-monitor.service.js';
+import * as folderScanQueue from '../queue/folder-scan.queue.js';
 
 // Mock the queue module
-vi.mock('../queue/folderScanQueue.js', () => ({
+vi.mock('../queue/folder-scan.queue.js', () => ({
   addFolderScanJob: vi.fn().mockResolvedValue(undefined),
   folderScanQueue: {},
 }));
