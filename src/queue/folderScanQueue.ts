@@ -1,15 +1,13 @@
 import { Queue } from 'bullmq';
 import type { QueueOptions } from 'bullmq';
 import type { FolderScanJob } from '../types/index.js';
+import { redisConnection } from './connection.js';
 
 /**
  * Default queue configuration
  */
 const defaultQueueConfig: QueueOptions = {
-  connection: {
-    host: process.env.REDIS_HOST || 'localhost',
-    port: parseInt(process.env.REDIS_PORT || '6379', 10),
-  },
+  connection: redisConnection,
 };
 
 /**

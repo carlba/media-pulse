@@ -1,5 +1,6 @@
 import { Worker, Job } from 'bullmq';
 import type { FolderScanJob } from '../types/index.js';
+import { redisConnection } from '../queue/connection.js';
 
 /**
  * Process a folder scan job
@@ -24,10 +25,7 @@ async function processFolderScan(job: Job<FolderScanJob>): Promise<void> {
  */
 export function createFolderScanWorker(): Worker<FolderScanJob> {
   const worker = new Worker<FolderScanJob>('folder-scan', processFolderScan, {
-    connection: {
-      host: process.env.REDIS_HOST || 'localhost',
-      port: parseInt(process.env.REDIS_PORT || '6379', 10),
-    },
+    connection: redisConnection,
   });
 
   worker.on('completed', (job) => {
@@ -35,7 +33,11 @@ export function createFolderScanWorker(): Worker<FolderScanJob> {
   });
 
   worker.on('failed', (job, err) => {
-    console.error(`Job ${job?.id} failed with error:`, err);
+    if (job) {
+      console.error(`Job ${job.id} failed with error:`, err);
+    } else {
+      console.error(`Job failed with error:`, err);
+    }
   });
 
   return worker;
